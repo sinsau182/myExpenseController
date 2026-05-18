@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #07111f;
+  --foreground: #eaf1ff;
+  --panel: rgba(8, 18, 34, 0.82);
+  --panel-strong: rgba(12, 24, 45, 0.96);
+  --border: rgba(148, 163, 184, 0.16);
+  --accent: #62d0ff;
+  --accent-strong: #8f6cff;
+  --accent-soft: rgba(98, 208, 255, 0.18);
+  --success: #5de1a4;
+  --warning: #f8c96a;
+  --danger: #ff8da1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at top left, rgba(98, 208, 255, 0.16), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(143, 108, 255, 0.16), transparent 26%),
+    linear-gradient(180deg, #07111f 0%, #0a1425 100%);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent 90%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(98, 208, 255, 0.25);
+}
