@@ -1,4 +1,4 @@
-export type ExpenseSource = 'mock' | 'bank-api';
+export type ExpenseSource = 'bank-api';
 
 export type ExpenseRecord = {
   id: string;
@@ -13,7 +13,7 @@ export type ExpenseRecord = {
   status: 'posted' | 'pending';
 };
 
-export type ExpenseConnectionStatus = 'connected' | 'mock' | 'error';
+export type ExpenseConnectionStatus = 'connected' | 'error';
 
 export type ExpenseFeed = {
   expenses: ExpenseRecord[];

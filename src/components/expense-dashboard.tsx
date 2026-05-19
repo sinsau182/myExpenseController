@@ -97,7 +97,7 @@ export function ExpenseDashboard() {
     void loadExpenses();
   }, []);
 
-  const expenses = feed?.expenses ?? [];
+  const expenses = useMemo(() => feed?.expenses ?? [], [feed]);
 
   const categories = useMemo<string[]>(
     () => ['all', ...new Set(expenses.map((item: ExpenseRecord) => item.category))],
@@ -185,9 +185,9 @@ export function ExpenseDashboard() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Bank connection</p>
-                <p className="mt-1 text-sm font-medium text-white">{feed?.connection.status === 'connected' ? 'Live feed' : feed?.connection.status === 'mock' ? 'Sample data' : 'Needs attention'}</p>
+                <p className="mt-1 text-sm font-medium text-white">{feed?.connection.status === 'connected' ? 'Live feed' : 'Needs attention'}</p>
               </div>
-              <div className={`rounded-full px-3 py-1 text-xs font-semibold ${feed?.connection.status === 'connected' ? 'bg-emerald-400/15 text-emerald-200' : feed?.connection.status === 'mock' ? 'bg-amber-400/15 text-amber-200' : 'bg-rose-400/15 text-rose-200'}`}>
+              <div className={`rounded-full px-3 py-1 text-xs font-semibold ${feed?.connection.status === 'connected' ? 'bg-emerald-400/15 text-emerald-200' : 'bg-rose-400/15 text-rose-200'}`}>
                 {feed?.connection.status ?? 'loading'}
               </div>
             </div>
@@ -420,7 +420,7 @@ export function ExpenseDashboard() {
 
         {loadState === 'error' ? (
           <div className="mt-6 rounded-3xl border border-rose-400/20 bg-rose-400/10 px-4 py-3 text-sm text-rose-100">
-            The dashboard could not load live data, so it is showing the fallback dataset.
+            The dashboard could not load live data. Configure the bank API endpoint and refresh.
           </div>
         ) : null}
       </section>

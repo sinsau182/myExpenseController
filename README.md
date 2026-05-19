@@ -5,7 +5,7 @@ An interactive Next.js dashboard for exploring personal expense history. The app
 ## What it does
 
 - Fetches expense data from a bank endpoint when environment variables are configured.
-- Falls back to realistic mock data when no bank endpoint is available.
+- Shows an error state if the bank endpoint is not configured or cannot be reached.
 - Lets you filter transactions by search term, category, account, and time window.
 - Surfaces summary cards, a monthly spend chart, a category ranking, and a recent activity feed.
 
@@ -17,14 +17,14 @@ An interactive Next.js dashboard for exploring personal expense history. The app
 
 ## Bank API configuration
 
-Set one of these environment variables before starting the app:
+Set these environment variables before starting the app:
 
 - `BANK_API_BASE_URL`
 - `BANK_EXPENSES_PATH` or `BANK_API_EXPENSES_ENDPOINT`
 - `BANK_API_KEY`
 - `BANK_ACCOUNT_ID`
 
-If no bank endpoint is configured, the app uses mocked expense data so the dashboard still works.
+`BANK_API_BASE_URL` is required. The app only renders fetched expense data and does not synthesize fallback transactions.
 
 ## Project structure
 
